@@ -8,6 +8,9 @@ namespace RominaTest
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Press enter key to play.");
+            Console.ReadLine();
+
             var rounds = 100;
 
             var player1Choice = Choices.Rock;
@@ -22,6 +25,12 @@ namespace RominaTest
                 // we get the result of the game
                 var result = CheckWinner(player1Choice, player2Choice);
 
+                Console.Write($"Player 1 picked {player1Choice} and player 2 picked {player2Choice}. Result is ");
+                if (result == 0)
+                    Console.WriteLine($"Draw.");
+                else
+                    Console.WriteLine($"Win for player {result}");
+
                 // we add the result in a list to aggregate them later.
                 results.Add(result);
             }
@@ -30,6 +39,7 @@ namespace RominaTest
             var p1wins = results.Count(c => c == 1);
             var p2wins = results.Count(c => c == 2);
 
+            Console.WriteLine($"");
             Console.WriteLine($"The results for {rounds} rounds were as following:");
 
             Console.WriteLine($"There were {draws} draws.");
